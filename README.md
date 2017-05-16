@@ -72,4 +72,61 @@ public void progress9 (int aaa){
   //단, 인자의 타입이나 개수가 달라야함
 	}
 ````
-#### 인터페이스
+#### 인터페이스 implements
+
+- 선언은 interface [이름]으로 해야 함
+- 추상 클래스와 비슷하지만 제한적
+- 무한 상속이 가능
+``` java
+public class Father implements Cook, Fix....{
+
+}
+```
+- 변수 정의는하지 않고 기능만 가능 (함수 이름만 정의)
+- 코드가 변할 가능성이 높으면 인터페이스로 정의해 주는게 좋음
+```java
+public interface Cook {
+	public void boil();   //{} 불가능 ,  abstract 예약어 생략 가능
+	public void gril();
+	public void fry();
+	public void steam();
+}
+```
+
+
+#### 추상 클래스 abstract
+
+- 다중 상속이 불가능
+- 인터페이스와 비슷하지만 코드를 작성할 수 있음
+- 기능뿐 아니라 코드를 추상적으로 설계 가능
+- 코드가 바뀌지 않을때 사용
+- 추상메서드를 정의하면 추상클래스를 상속받은 클래스에서는 반드시 추상메서드를 Override 하여 정의하여야 한다.
+
+```java
+public abstract class Fix {
+
+public void process9(){  // 로직이 구상될 때 abstract를 사
+  disassemble();
+  for(int i = 0; i<3; i++){
+    replacePart();  // 항상 세번씩 교체
+  }
+  replacePart();
+  clean();
+  assemble();
+  runLogic();
+}
+
+private void runLogic(){
+  // 이 로직은 바뀌면 안되고 내부적으로만 써야됨..
+}
+public abstract void disassemble(); // 분해 // {} 생략 가능
+
+public abstract void replacePart();   // 교체
+
+public abstract void clean(); // 청소
+
+public abstract void assemble();  // 조립
+
+}
+
+```
