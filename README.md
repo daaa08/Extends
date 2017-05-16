@@ -130,3 +130,50 @@ public abstract void assemble();  // 조립
 }
 
 ```
+
+#### 예외 Exception
+
+> try {
+  //////로직
+}catch (오류) {
+  /////예외처리
+}finally{
+  ///// 예외와 상관없이 무조건 실행할 로직
+}
+
+- 코드는 순서대로 진행되나, 에러처리는 다른 메소드에서 따로 동작을 해 줌
+- 실행 중 첫번째에서 에러가 발생하면 바로 아웃 됨
+
+```java
+try{
+		array[0] = 5;
+		array[5] = 10;
+		array[6] = 11;
+
+		int x = 1/0;
+
+		String s = "137";
+		int a = Integer.parseInt(s);
+
+		}catch(ArrayIndexOutOfBoundsException e){
+			e.printStackTrace();  // 새로운 스레드를 생성해서 에러를 출력
+
+		}catch(ArithmeticException e){  // 산술에러 int x =1/0에러 표시
+			e.printStackTrace();
+
+		}finally{
+			System.out.println("다섯번째 값은=" +array[5]);
+		}
+```
+
+#### 다형성 Polymorphism
+
+- 부모 클래스 타입의 변수로 자식 클래스의 인스턴스를 참조
+```java
+Father daughter = new Daughter();
+```
+
+---
+- 전역변수 : 어디서든 접근 가능한 변수 (함수 내에서 선언x)
+- super(): 부모클래스의 생성자를 호출
+- this() : 자기 자신의 생성자 호출
